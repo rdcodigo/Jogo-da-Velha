@@ -21,9 +21,17 @@ function handleClick (event){
     if(handleMove(position)){
         setTimeout(
             ()=>{
-                alert("O jogo acabou, os vencedores foram os " + jogadores[playerTime])
+                let gameOverPage = document.getElementById("gameOverPage");
+                gameOverPage.innerHTML = `
+                <img src="./images/${jogadores[playerTime]}.gif" alt="">
+                <p id="gameOverMsg">
+                O jogo acabou, os vencedores foram os ${jogadores[playerTime]}
+                </p>
+
+                <div onclick="restart()"  class="button"> JOGAR NOVAMENTE </div>
+                `;
             }
-        ), 1500;
+        ), 2000;
     }
     updateSquare(position);
 }
@@ -49,4 +57,9 @@ function restart(){
             square.innerHTML = '';
         }
     )
+
+    let gameOverPage = document.getElementById("gameOverPage");
+    gameOverPage.style.display = "none";
+    gameOverPage.innerHTML = ``;
+    return true;
 }

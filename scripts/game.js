@@ -35,14 +35,15 @@ function handleMove(position){
 function isWin(){
 
     for(let i=0; i<winStates.length; i++){
-        let seq =winStates[i];
+        let seq = winStates[i];
         let pos1 = seq[0];
         let pos2 = seq[1];
         let pos3 = seq[2];
 
         if(board[pos1]==board[pos2] && board[pos2]==board[pos3] && board[pos1] != ''){
+            let gameOverPage = document.getElementById("gameOverPage");
+            gameOverPage.style.display = "flex";
             return true;
         }
     }
-
 }
