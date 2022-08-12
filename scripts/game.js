@@ -1,7 +1,7 @@
 
 let board = ['','','','','','','','',''];
 let playerTime = 0;
-let jogadores = ["Macacos", "Leopardos"];
+let jogadores = ["Gorilas", "Leopardos"];
 let symbols = ['o', 'x'];
 let gameOver = false;
 let winStates=[

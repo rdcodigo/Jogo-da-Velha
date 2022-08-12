@@ -23,12 +23,15 @@ function handleClick (event){
             ()=>{
                 let gameOverPage = document.getElementById("gameOverPage");
                 gameOverPage.innerHTML = `
+
                 <img src="./images/${jogadores[playerTime]}.gif" alt="">
+
                 <p id="gameOverMsg">
-                O jogo acabou, os vencedores foram os ${jogadores[playerTime]}
+                Fim de jogo, os vencedores foram os ${jogadores[playerTime]}
                 </p>
 
                 <div onclick="restart()"  class="button"> JOGAR NOVAMENTE </div>
+
                 `;
             }
         ), 2000;
