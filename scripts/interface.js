@@ -19,23 +19,37 @@ function handleClick (event){
     let position = square.id;
 
     if(handleMove(position)){
-        setTimeout(
-            ()=>{
-                let gameOverPage = document.getElementById("gameOverPage");
-                gameOverPage.innerHTML = `
+        let gameOverPage = document.getElementById("gameOverPage");
+        gameOverPage.innerHTML = `
+            <img src="./images/${jogadores[playerTime]}.gif" alt="">
 
-                <img src="./images/${jogadores[playerTime]}.gif" alt="">
+            <p id="gameOverMsg">
+            Fim de jogo, os vencedores foram os ${jogadores[playerTime]}
+            </p>
 
-                <p id="gameOverMsg">
-                Fim de jogo, os vencedores foram os ${jogadores[playerTime]}
-                </p>
+            <div onclick="restart()"  class="button"> JOGAR NOVAMENTE </div>
 
-                <div onclick="restart()"  class="button"> JOGAR NOVAMENTE </div>
-
-                `;
-            }
-        ), 2000;
+        `;
     }
+
+    if(noWin()){
+
+        let gameOverPage = document.getElementById("gameOverPage");
+        gameOverPage.innerHTML = `
+            <div>
+                <img src="./images/cryMonkey.gif" alt="">
+                <img src="./images/cryLeopard.gif" alt="">
+            </div>
+            <p id="gameOverMsg">
+            Fim de jogo, ninguem venceu.
+            </p>
+
+            <div onclick="restart()"  class="button"> JOGAR NOVAMENTE </div>
+        `;
+
+        gameOverPage.style.display = "flex";
+    }
+
     updateSquare(position);
 }
 
@@ -54,6 +68,7 @@ function restart(){
     jogadores = ["Macacos", "Leopardos"];
     symbols = ['o', 'x'];
     gameOver = false;
+    plays = 0;
 
     squares.forEach(
         (square)=>{

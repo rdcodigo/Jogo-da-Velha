@@ -1,7 +1,7 @@
 
 let board = ['','','','','','','','',''];
 let playerTime = 0;
-let jogadores = ["Gorilas", "Leopardos"];
+let jogadores = ["Macacos", "Leopardos"];
 let symbols = ['o', 'x'];
 let gameOver = false;
 let winStates=[
@@ -45,5 +45,22 @@ function isWin(){
             gameOverPage.style.display = "flex";
             return true;
         }
+    }
+}
+
+function noWin(){
+    let op = 0;
+    board.forEach(
+        element=>{
+            if(element != ""){
+                op++;
+            }
+        }
+    )
+
+    if(op === 9){
+        return true;
+    }else{
+        return false;
     }
 }
